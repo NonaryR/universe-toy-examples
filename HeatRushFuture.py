@@ -22,7 +22,7 @@ def determine_turn(turn, observation_n, j, total_sum, prev_total_sum, reward_n):
 
 	else:
 		turn = False
-	if(observation_n != None):
+	if observation_n != None:
 		#increment counter and reward sum
 		j+=1
 		total_sum += reward_n
@@ -46,8 +46,7 @@ def main():
 	#define our turns or keyboard actions
 	left = [('KeyEvent', 'ArrowUp', True) ,('KeyEvent', 'ArrowLeft', True), ('KeyEvent', 'ArrowRight', False)]
 	right = [('KeyEvent', 'ArrowUp', True) ,('KeyEvent', 'ArrowLeft', False), ('KeyEvent', 'ArrowRight', True)]
-	Forward = [('KeyEvent', 'ArrowUp', True) ,('KeyEvent', 'ArrowLeft', False), ('KeyEvent', 'ArrowRight', False)]
-
+	forward = [('KeyEvent', 'ArrowUp', True) ,('KeyEvent', 'ArrowLeft', False), ('KeyEvent', 'ArrowRight', False)]
 
 	#main logic
 	while True:
@@ -71,10 +70,9 @@ def main():
 					#set turn to false
 					turn = False
 
-		elif(~turn):
+		elif ~turn:
 			#if no turn is needed, go straight
-			action_n = [Forward for ob in observation_n]
-
+			action_n = [forward for ob in observation_n]
 
 		#if there is an obseravtion, game has started, check if turn needed
 		if observation_n[0] != None:
